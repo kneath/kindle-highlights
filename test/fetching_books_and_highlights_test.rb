@@ -24,6 +24,7 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     assert_equal "B000XUAETY", book.asin
     assert_equal "James R. Mcdonough", book.author
     assert_equal "Platoon Leader: A Memoir of Command in Combat", book.title
+    assert_equal "Thursday November 16, 2017", book.last_annotated
     assert_equal "https://read.amazon.com", book.root_url
   end
 

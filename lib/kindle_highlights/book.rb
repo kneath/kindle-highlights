@@ -1,6 +1,6 @@
 module KindleHighlights
   class Book
-    attr_accessor :asin, :author, :title, :root_url
+    attr_accessor :asin, :author, :title, :last_annotated, :root_url
 
     def self.from_html_elements(html_element:, root_url:, mechanize_agent:)
       new(
@@ -8,14 +8,16 @@ module KindleHighlights
         mechanize_agent: mechanize_agent,
         asin: html_element.attributes["id"].value.squish,
         title: html_element.children.search("h2").first.text.squish,
-        author: html_element.children.search("p").first.text.split(":").last.strip.squish
+        author: html_element.children.search("p").first.text.split(":").last.strip.squish,
+        last_annotated: html_element.children.search("input").first.attributes["value"].value.squish
       )
     end
 
-    def initialize(asin:, author:, title:, root_url:, mechanize_agent: nil)
+    def initialize(asin:, author:, title:, last_annotated:, root_url:, mechanize_agent: nil)
       @asin = asin
       @author = author
       @title = title
+      @last_annotated = last_annotated
       @root_url = root_url
       @mechanize_agent = mechanize_agent
     end

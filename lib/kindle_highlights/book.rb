@@ -9,7 +9,7 @@ module KindleHighlights
         asin: html_element.attributes["id"].value.squish,
         title: html_element.children.search("h2").first.text.squish,
         author: html_element.children.search("p").first.text.split(":").last.strip.squish,
-        last_annotated: html_element.children.search("input").first.attributes["value"].value.squish
+        last_annotated: Date.parse(html_element.children.search("input").first.attributes["value"].value.squish)
       )
     end
 

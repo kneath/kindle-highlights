@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "mechanize", ">= 2.7.5"
   s.add_runtime_dependency "activesupport"
   s.add_development_dependency "rake"
-  s.add_development_dependency "bundler",  "~> 1.3"
+  s.add_development_dependency "bundler"
   s.add_development_dependency "minitest", "~> 5.0"
 end
